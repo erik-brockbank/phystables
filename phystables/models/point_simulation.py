@@ -1,4 +1,3 @@
-from __future__ import division
 from ..tables import NoisyTable, make_noisy
 from ..constants import *
 from OptimTools import async_map

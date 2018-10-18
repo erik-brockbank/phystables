@@ -1,4 +1,3 @@
-from __future__ import print_function
 from ..models import *
 
 def psdraw_density(self, rp_wid = 5, greyscale = (0,255), gamadj = .2):

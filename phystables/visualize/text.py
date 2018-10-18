@@ -2,7 +2,6 @@
 #
 # Helper methods for centering and writing text onto a screen
 
-from __future__ import division
 import pygame as pg
 import time
 from pygame.locals import *

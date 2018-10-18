@@ -9,8 +9,6 @@ Examples:
 
 """
 
-from __future__ import division, print_function
-from future.builtins.misc import input
 import sys
 import os
 import warnings

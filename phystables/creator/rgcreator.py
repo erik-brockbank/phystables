@@ -2,10 +2,12 @@ import os, sys, platform, time, warnings
 import numpy as np
 import pygame as pg
 from pygame.constants import *
-from .. import RedGreenTrial, BasicTable, SimpleTable, loadTrial, constants
+from .. import RedGreenTrial, BasicTable, SimpleTable, constants, load_trial
 from .rgcmenu import *
 from .rgccursors import RGCursor
-import Tkinter, tkFileDialog, tkMessageBox
+import tkinter
+import tkinter.messagebox as messagebox
+import tkinter.filedialog as filedialog
 
 # Figure out which keys are the modifiers
 if platform.system() == 'Darwin':
@@ -157,8 +159,8 @@ class RGCreator(object):
 
     # Runs the creator from scratch
     def runCreator(self):
-        # Set up Tkinter & pygame
-        root = Tkinter.Tk()
+        # Set up tkinter & pygame
+        root = tkinter.Tk()
         root.withdraw()
         self.tkon = True
         pg.init()
@@ -188,10 +190,10 @@ class RGCreator(object):
     def play(self):
         tr = self.makeTrial(allowInfTime=True)
         if tr is None:
-            #tkMessageBox.showerror('Trial error!', 'Trial is not a valid red/green trial. Needs the ball, each goal, and no overlaps between ball, goals, and wall')
+            #messagebox.showerror('Trial error!', 'Trial is not a valid red/green trial. Needs the ball, each goal, and no overlaps between ball, goals, and wall')
             return None
 
-        tb = tr.makeTable()
+        tb = tr.make_table()
         self.menu.buttons['play'].setIcon('stop')
         self.menu.disableButtonsButOne('play')
 
@@ -225,7 +227,7 @@ class RGCreator(object):
     # Safe quitting from anywhere
     def quit(self):
         if self.changed:
-            dosave = tkMessageBox.askyesno('Save?', 'Would you like to save before quitting?')
+            dosave = messagebox.askyesno('Save?', 'Would you like to save before quitting?')
             if dosave:
                 sv = self.save()
                 if sv is None: return False
@@ -514,7 +516,7 @@ class RGCreator(object):
         elif oname == 'ggoal': r = self.ggoal
         elif oname[0] == 'w': r = self.walls[oname]
         elif oname[0] == 'o': r = self.occs[oname]
-        else: print (oname)
+        else: print(oname)
 
         return pg.Rect(r[0], (r[1][0] - r[0][0], r[1][1] - r[0][1]) )
 
@@ -676,44 +678,44 @@ class RGCreator(object):
         if tr is None: return None
 
         if movfl is None:
-            movfl = tkFileDialog.asksaveasfilename(defaultextension='.mov', initialfile = self.name+'.mov')
+            movfl = tkinter.filedialog.asksaveasfilename(defaultextension='.mov', initialfile = self.name+'.mov')
             if movfl == '': return None
 
         movpath = os.path.dirname(movfl)
         movnm = os.path.basename(movfl)
 
-        tb = tr.makeTable()
+        tb = tr.make_table()
         with warnings.catch_warnings(record = True) as w:
             warnings.simplefilter('always')
             isgood = tb.makeMovie(movnm, movpath)
             if not isgood:
-                tkMessageBox.showerror('Cannot make movie!', str(w[0].message))
+                messagebox.showerror('Cannot make movie!', str(w[0].message))
                 return None
             else:
-                tkMessageBox.showinfo('Done!','Your movie has been created')
+                messagebox.showinfo('Done!','Your movie has been created')
                 return True
 
     def load(self, trpath = None):
         if trpath is None:
             if self.tkon:
-                trpath = tkFileDialog.askopenfilename(filetypes = [('PhysicsTrials','*.ptr')])
+                trpath = tkinter.filedialog.askopenfilename(filetypes = [('PhysicsTrials','*.ptr')])
                 if trpath == '': return False
             else: return False
 
         try:
-            tr = loadTrial(trpath)
+            tr = load_trial(trpath, trialType=RedGreenTrial)
         except:
-            if self.tkon: tkMessageBox.showerror('File not found!','File not found!')
+            if self.tkon: messagebox.showerror('File not found!','File not found!')
             else: warnings.warn( "File not found!")
             return False
         if tr.__class__.__name__ != "RedGreenTrial":
-            if self.tkon: tkMessageBox.showerror('Incorrect file type','File is not a RedGreenTrial type')
+            if self.tkon: messagebox.showerror('Incorrect file type','File is not a RedGreenTrial type')
             else: warnings.warn( "File is not a RedGreenTrial type")
             return False
 
         for g in tr.goals:
             if g[2] not in [REDGOAL, GREENGOAL]:
-                if self.tkon: tkMessageBox.showerror('Goal error','Goal that is not red or green found')
+                if self.tkon: messagebox.showerror('Goal error','Goal that is not red or green found')
                 else: warnings.warn( "Goal that is not red or green found")
                 return False
 
@@ -734,7 +736,7 @@ class RGCreator(object):
             self.occs['o'+str(self.oct)] = o[0:2]
             self.oct += 1
         if len(tr.abnormwalls) > 0:
-            if self.tkon: tkMessageBox.showwarning('Feature not implemented yet!', "Abnormal walls (polygons) not supported yet and will not be loaded" )
+            if self.tkon: messagebox.showwarning('Feature not implemented yet!', "Abnormal walls (polygons) not supported yet and will not be loaded" )
             else: warnings.warn( "Abnormal walls (polygons) not supported yet and will not be loaded" )
         self.changed = False
         self.deffl = trpath
@@ -744,28 +746,28 @@ class RGCreator(object):
 
     def makeTrial(self, bvel = 300, allowInfTime = False):
         if self.ball is None or self.rgoal is None or self.ggoal is None:
-            tkMessageBox.showerror('Missing object','Cannot do this until you have a ball, red goal, and green goal')
+            messagebox.showerror('Missing object','Cannot do this until you have a ball, red goal, and green goal')
             return None
         tr = RedGreenTrial(self.name, self.tbdim, def_ball_vel=bvel)
-        tr.addBall(self.ball[0],self.ball[1],self.ball[2])
-        tr.addGoal(self.rgoal[0],self.rgoal[1],REDGOAL,RED)
-        tr.addGoal(self.ggoal[0],self.ggoal[1],GREENGOAL,GREEN)
+        tr.add_ball(self.ball[0],self.ball[1],self.ball[2])
+        tr.add_goal(self.rgoal[0],self.rgoal[1],REDGOAL,RED)
+        tr.add_goal(self.ggoal[0],self.ggoal[1],GREENGOAL,GREEN)
         for w in self.walls.values():
-            tr.addWall(w[0],w[1])
+            tr.add_wall(w[0],w[1])
         for o in self.occs.values():
             tr.addOcc(o[0],o[1])
-        tr.normalizeVel()
+        tr.normalize_vel()
 
         with warnings.catch_warnings(record = True) as w:
             warnings.simplefilter('always')
-            consist = tr.checkConsistency(nochecktime =allowInfTime)
+            consist = tr.check_consistency(nochecktime =allowInfTime)
             if len(w) > 1:
                 msg = "Multiple trial errors:"
                 for wm in w:
                     msg += '\n' + str(wm.message)
-                tkMessageBox.showerror('Trial consistency error!',msg)
+                messagebox.showerror('Trial consistency error!',msg)
             elif len(w) == 1:
-                tkMessageBox.showerror('Trial consistency error!',str(w[0].message))
+                messagebox.showerror('Trial consistency error!',str(w[0].message))
         if not consist: return None
         return tr
 
@@ -773,13 +775,13 @@ class RGCreator(object):
 
         tr = self.makeTrial()
         if tr is None:
-            #tkMessageBox.showerror('Trial error!', 'Trial is not a valid red/green trial. See console for details on what must be changed.')
+            #messagebox.showerror('Trial error!', 'Trial is not a valid red/green trial. See console for details on what must be changed.')
             return None
 
         if flnm is None and (self.deffl is None or saveas):
             if self.deffl is None: nm = self.name + '.ptr'
             else: nm = os.path.basename(self.deffl)
-            flnm = tkFileDialog.asksaveasfilename(defaultextension='.ptr', initialfile = nm)
+            flnm = tkinter.filedialog.asksaveasfilename(defaultextension='.ptr', initialfile = nm)
             if flnm == '': return False
         else: flnm = self.deffl
 

@@ -1,4 +1,3 @@
-from __future__ import division
 from phystables.constants import *
 import pymunk as pm
 from weakref import ref
