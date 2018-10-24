@@ -1,3 +1,17 @@
+Erik's version! This is anarchy!
+
+Methods
+We did some stuff
+
+
+Results
+
+p < .0001
+
+Nature please accept
+
+
+
 Update to the physicsTable package to be more in line with PEP, more flexible,
 more documented, etc. Not backwards compatible.
 
