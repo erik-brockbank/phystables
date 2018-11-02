@@ -1,7 +1,7 @@
 from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
-TRIAL_DIMS = [800, 800]
+TRIAL_DIMS = [600, 600]
 
 def make_test_trial():
     # Name the trial we're making (this will be used when we set up the trial and when we save it)
