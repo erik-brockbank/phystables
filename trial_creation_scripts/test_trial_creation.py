@@ -14,7 +14,7 @@ def make_test_trial():
     test_trial.add_wall(upperleft = [50, 50], lowerright = [60, 100])
 
     # Add a ball to our trial
-    test_trial.add_ball(initpos = [300, 300], initvel = [1,1])
+    test_trial.add_ball(initpos = [350, 300], initvel = [1,1])
 
     # Add red and green goals to our trial (we always need one of each!)
     test_trial.add_goal(upperleft = [400, 400], lowerright = [410, 500], color = GREEN, onreturn = GREENGOAL)
