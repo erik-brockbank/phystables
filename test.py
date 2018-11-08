@@ -17,7 +17,8 @@ if __name__ == '__main__':
         sys.exit(0)
 
 
-    pg.init()
+    # pg.init() # For some reason this produces "Illegal instruction: 4" on older macs but font init works (erikbrockbank 11/2018)
+    pg.font.init()
 
 
     if args[1] == 'BASIC':

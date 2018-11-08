@@ -163,7 +163,8 @@ class RGCreator(object):
         root = tkinter.Tk()
         root.withdraw()
         self.tkon = True
-        pg.init()
+        # pg.init() # For some reason this produces "Illegal instruction: 4" on older macs but font init works (erikbrockbank 11/2018)
+        pg.font.init()
         sc = pg.display.set_mode(self.dims)
         sc.blit(self.draw(), (0,0))
         pg.display.flip()
