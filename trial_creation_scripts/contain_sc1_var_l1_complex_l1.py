@@ -15,12 +15,10 @@ Notes:
 
 """
 
+from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TRIAL_DIMS
 from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
-TRIAL_DIMS = [600, 600]
-BALL_VELOCITY = [1, 1]
-SAVED_TRIAL_DIR = "saved_files"
 
 TRIAL_NAME = "contain_sc1_var_l1_complex_l1"
 

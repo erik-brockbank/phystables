@@ -11,3 +11,4 @@ Thumbs.db
 ehthumbs.db
 desktop.ini
 build/
+.vscode/*

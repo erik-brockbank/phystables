@@ -14,16 +14,12 @@ Last updated:
 Notes:
 
 """
-
+from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TRIAL_DIMS
 from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
-# from phystables.trial_creation_scripts.constants import TRIAL_DIMS
 
-TRIAL_DIMS = [600, 600] # TODO figure out how to import this from trial_creation_scripts.constants
-BALL_VELOCITY = [1, 1] # TODO add this to the constants file above
-SAVED_TRIAL_DIR = "saved_files" # TODO add this to the constants file above
 
-TRIAL_NAME = "template" # Modify this for actual trial scripts
+TRIAL_NAME = "template"
 
 
 # TODO fill in this function and delete this comment once it's complete
@@ -67,7 +63,7 @@ def main():
     trial = add_walls(trial)
     trial = add_obstacles(trial)
 
-    trial.save(flnm = TRIAL_NAME + ".ptr", fldir = "saved_trials")
+    trial.save(flnm = TRIAL_NAME + ".ptr", fldir = SAVED_TRIAL_DIR)
 
 
 # Ignore this

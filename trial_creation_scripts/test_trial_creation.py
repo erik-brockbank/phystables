@@ -1,11 +1,11 @@
 from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
+from constants import TRIAL_DIMS
 
-TRIAL_DIMS = [600, 600]
 
 def make_test_trial():
     # Name the trial we're making (this will be used when we set up the trial and when we save it)
-    name = "test_auto_script_lab_comp_2"
+    name = "test_auto_script_lab_comp"
 
     # Create a "RedGreenTrial" with the name above and dimensions specified by global TRIAL_DIMS variable
     test_trial = RedGreenTrial(name = name, dims = TRIAL_DIMS)
