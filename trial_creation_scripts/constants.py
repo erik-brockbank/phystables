@@ -6,4 +6,4 @@ BALL_VELOCITY = [1, 1]
 
 TRIAL_DIMS = [600, 600]
 
-SAVED_TRIAL_DIR = "saved_files"
+SAVED_TRIAL_DIR = "saved_trials"
