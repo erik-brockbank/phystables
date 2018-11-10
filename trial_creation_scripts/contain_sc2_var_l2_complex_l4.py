@@ -2,10 +2,10 @@
 """
 Trial Info
 
-Theme: containment TEMPLATE
-Scenario: scenario TEMPLATE
-Variable: containment level TEMPLATE 
-Complexity: complexity level TEMPLATE
+Theme: containment
+Scenario: scenario 2
+Variable: containment level 2
+Complexity: complexity level 4
 
 Status: Incomplete
 Assigned to:
@@ -20,7 +20,7 @@ from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
 
-TRIAL_NAME = "TEMPLATE"
+TRIAL_NAME = "contain_sc2_var_l2_complex_l4"
 
 
 # TODO fill in this function and delete this comment once it's complete

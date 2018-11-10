@@ -4,7 +4,7 @@ Trial Info
 
 Theme: containment
 Scenario: scenario TEMPLATE
-Variable: containment level TEMPLATE 
+Variable: containment level TEMPLATE
 Complexity: complexity level TEMPLATE
 
 Status: Incomplete
