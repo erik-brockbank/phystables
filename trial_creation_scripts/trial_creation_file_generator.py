@@ -9,6 +9,9 @@ FILE_TEMPLATE_FORMAT = "{}_sc{}_var_l{}_complex_l{}.py" # the above globals will
 FILE_TEMPLATE_NAME = "trial_creation_template.py" # this is the "source" file we're copying to each new file
 FILE_PATH = "trial_creation_scripts/"
 
+# Re-assigning this here so if this script is run accidentally it doesn't override people's work on existing files
+FILE_TEMPLATE_FORMAT = "dummy{}_{}_{}_{}.py" # TODO delete this before running the script!
+
 def main():
     bash_cmd = "cp {} {}"
     for scene_level in range(1, SCENARIO_VARIANTS + 1):

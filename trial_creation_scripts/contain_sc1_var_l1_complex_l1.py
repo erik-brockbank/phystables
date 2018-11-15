@@ -73,7 +73,7 @@ def add_targets(trial):
         target_1_goal = REDGOAL
         target_2_color = GREEN
         target_2_goal = GREENGOAL
-    
+
     # Add target 1, target 2 to trial
     trial.add_goal(
         upperleft = target_1_upper_left_coords,
@@ -133,7 +133,8 @@ def main():
     add_targets(trial)
     add_walls(trial)
     add_obstacles(trial)
-    trial.save(flnm = TRIAL_NAME + ".ptr", fldir = SAVED_TRIAL_DIR)
+    trial.save(flnm = TRIAL_NAME + ".ptr", fldir = SAVED_TRIAL_DIR) # save .ptr for viewing with simulator
+    trial.save(flnm = TRIAL_NAME + ".json", fldir = SAVED_TRIAL_DIR) # save .json for use in actual experiments
 
 
 # Ignore this
