@@ -15,7 +15,7 @@ Notes:  the width of walls are 20, the targets are 50*100
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TRIAL_DIMS
+from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
 from phystables.trials import RedGreenTrial
 from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
