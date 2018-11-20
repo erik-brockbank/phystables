@@ -8,10 +8,10 @@ Variable: containment level 1
 Complexity: complexity level 2
 
 Status: Incomplete
-Assigned to:
-Last updated:
+Assigned to: Christine
+Last updated: 11/19
 
-Notes:
+Notes: same as sc3 containment 1 complexity 1
 
 """
 import random
@@ -23,7 +23,6 @@ from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 TRIAL_NAME = "contain_sc3_var_l1_complex_l2"
 
 
-# TODO fill in this function and delete this comment once it's complete
 def add_ball(trial):
     """
     This function adds the ball to the proper place for this trial.
@@ -31,12 +30,12 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = "" # TODO replace these "" with a number and delete this comment!
-    ball_y = "" # TODO replace these "" with a number and delete this comment!
+    ball_x = 30
+    ball_y = 200
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
-# TODO fill in this function and delete this comment once it's complete
+
 def add_targets(trial):
     """
     This function adds the targets to the proper place for this trial.
@@ -47,18 +46,18 @@ def add_targets(trial):
         with a number indicating the upper left or bottom right X or Y value
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_1_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_1_upper_left_x = 370
+    target_1_upper_left_y = 500
+    target_1_lower_right_x = 420 
+    target_1_lower_right_y = 600 
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_2_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_2_upper_left_x = 420
+    target_2_upper_left_y = 200
+    target_2_lower_right_x = 520
+    target_2_lower_right_y = 250
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -89,7 +88,7 @@ def add_targets(trial):
     )
 
 
-# TODO fill in this function and delete this comment once it's complete
+
 def add_walls(trial):
     """
     This function adds the walls to the proper place for this trial.
@@ -102,12 +101,17 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": "", # TODO replace these "" with a number and delete this comment!
-            "upper_left_y": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_x": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_y": "", # TODO replace these "" with a number and delete this comment!
+            "upper_left_x": 100,    #vertical
+            "upper_left_y": 0, 
+            "lower_right_x": 120, 
+            "lower_right_y": 430,
         },
-        # Individual wall definition ends above this line
+        {
+            "upper_left_x": 100,    #horizontal
+            "upper_left_y": 430, 
+            "lower_right_x": 350, 
+            "lower_right_y": 450,
+        }
     ]
 
     # Add each wall in the `walls_list` above to the trial

@@ -8,10 +8,10 @@ Variable: containment level 1
 Complexity: complexity level 4
 
 Status: Incomplete
-Assigned to:
-Last updated:
+Assigned to: Christine
+Last updated: 11/19
 
-Notes:
+Notes: same as sc2 containment 1 complexity 1
 
 """
 import random
@@ -23,7 +23,6 @@ from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 TRIAL_NAME = "contain_sc2_var_l1_complex_l4"
 
 
-# TODO fill in this function and delete this comment once it's complete
 def add_ball(trial):
     """
     This function adds the ball to the proper place for this trial.
@@ -31,34 +30,36 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = "" # TODO replace these "" with a number and delete this comment!
-    ball_y = "" # TODO replace these "" with a number and delete this comment!
+    ball_x = 110
+    ball_y = 500
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
-# TODO fill in this function and delete this comment once it's complete
+
 def add_targets(trial):
     """
     This function adds the targets to the proper place for this trial.
     Note target 1 and target 2 can refer to either the red or the green target:
     we'll randomly assign at the end.
-    How to fill this out:
-    1. Add the proper X,Y coordinate values for target 1 and target 2 by replacing each ""
+    How to fill t
+    s out:
+    1. Add the pr
+    er X,Y coordinate values for target 1 and target 2 by replacing each ""
         with a number indicating the upper left or bottom right X or Y value
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_1_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_1_upper_left_x = 40
+    target_1_upper_left_y = 130
+    target_1_lower_right_x = 140
+    target_1_lower_right_y = 180
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_2_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_2_upper_left_x = 250
+    target_2_upper_left_y = 100
+    target_2_lower_right_x = 350  
+    target_2_lower_right_y = 150
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -89,7 +90,7 @@ def add_targets(trial):
     )
 
 
-# TODO fill in this function and delete this comment once it's complete
+
 def add_walls(trial):
     """
     This function adds the walls to the proper place for this trial.
@@ -102,12 +103,30 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": "", # TODO replace these "" with a number and delete this comment!
-            "upper_left_y": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_x": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_y": "", # TODO replace these "" with a number and delete this comment!
+            "upper_left_x": 230,  #left vertical
+            "upper_left_y": 200,
+            "lower_right_x": 250,
+            "lower_right_y": 430,
         },
         # Individual wall definition ends above this line
+        {
+            "upper_left_x": 350,  #right vertical
+            "upper_left_y": 200,
+            "lower_right_x": 370,
+            "lower_right_y": 430,
+        },
+        {
+            "upper_left_x": 0,  #left horizontal
+            "upper_left_y": 430,
+            "lower_right_x": 250,
+            "lower_right_y": 450,
+        },
+        {
+            "upper_left_x": 350,  #right horizontal
+            "upper_left_y": 430,
+            "lower_right_x": 600,
+            "lower_right_y": 450,
+        }
     ]
 
     # Add each wall in the `walls_list` above to the trial

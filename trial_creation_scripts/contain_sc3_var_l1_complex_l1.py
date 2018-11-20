@@ -7,9 +7,9 @@ Scenario: scenario 3
 Variable: containment level 1
 Complexity: complexity level 1
 
-Status: Incomplete
+Status: Complete
 Assigned to: Christine
-Last updated: 11/15/2018
+Last updated: 11/19/2018
 
 Notes:
 
@@ -23,7 +23,6 @@ from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 TRIAL_NAME = "contain_sc3_var_l1_complex_l1"
 
 
-# TODO fill in this function and delete this comment once it's complete
 def add_ball(trial):
     """
     This function adds the ball to the proper place for this trial.
@@ -48,9 +47,9 @@ def add_targets(trial):
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
     target_1_upper_left_x = 370
-    target_1_upper_left_y = 400
+    target_1_upper_left_y = 500
     target_1_lower_right_x = 420 
-    target_1_lower_right_y = 500 
+    target_1_lower_right_y = 600 
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
@@ -102,18 +101,17 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": "80",    #vertical
-            "upper_left_y": "0", 
-            "lower_right_x": "100", 
-            "lower_right_y": "380",
+            "upper_left_x": 100,    #vertical
+            "upper_left_y": 0, 
+            "lower_right_x": 120, 
+            "lower_right_y": 430,
         },
         {
-            "upper_left_x": "80",    #horizontal
-            "upper_left_y": "380", 
-            "lower_right_x": "350", 
-            "lower_right_y": "400",
-        },
-        # Individual wall definition ends above this line
+            "upper_left_x": 100,    #horizontal
+            "upper_left_y": 430, 
+            "lower_right_x": 350, 
+            "lower_right_y": 450,
+        }
     ]
 
     # Add each wall in the `walls_list` above to the trial

@@ -7,7 +7,7 @@ Scenario: scenario 2
 Variable: containment level 1
 Complexity: complexity level 1
 
-Status: Incomplete
+Status: Complete
 Assigned to: Christine
 Last updated: 11/15
 
@@ -31,8 +31,8 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = 220
-    ball_y = 400
+    ball_x = 110
+    ball_y = 500
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
@@ -42,23 +42,25 @@ def add_targets(trial):
     This function adds the targets to the proper place for this trial.
     Note target 1 and target 2 can refer to either the red or the green target:
     we'll randomly assign at the end.
-    How to fill this out:
-    1. Add the proper X,Y coordinate values for target 1 and target 2 by replacing each ""
+    How to fill t
+    s out:
+    1. Add the pr
+    er X,Y coordinate values for target 1 and target 2 by replacing each ""
         with a number indicating the upper left or bottom right X or Y value
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_1_upper_left_x = 100
-    target_1_upper_left_y = 70
-    target_1_lower_right_x = 200
-    target_1_lower_right_y = 120
+    target_1_upper_left_x = 40
+    target_1_upper_left_y = 130
+    target_1_lower_right_x = 140
+    target_1_lower_right_y = 180
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
     target_2_upper_left_x = 250
-    target_2_upper_left_y = 0
+    target_2_upper_left_y = 100
     target_2_lower_right_x = 350  
-    target_2_lower_right_y = 50
+    target_2_lower_right_y = 150
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -102,29 +104,29 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": 250,  #left vertical
-            "upper_left_y": 130,
-            "lower_right_x": 270,
-            "lower_right_y": 250,
+            "upper_left_x": 230,  #left vertical
+            "upper_left_y": 200,
+            "lower_right_x": 250,
+            "lower_right_y": 430,
         },
         # Individual wall definition ends above this line
         {
-            "upper_left_x": 330,  #right vertical
-            "upper_left_y": 130,
-            "lower_right_x": 350,
-            "lower_right_y": 250,
+            "upper_left_x": 350,  #right vertical
+            "upper_left_y": 200,
+            "lower_right_x": 370,
+            "lower_right_y": 430,
         },
         {
             "upper_left_x": 0,  #left horizontal
-            "upper_left_y": 250,
-            "lower_right_x": 270,
-            "lower_right_y": 270,
+            "upper_left_y": 430,
+            "lower_right_x": 250,
+            "lower_right_y": 450,
         },
         {
-            "upper_left_x": 330,  #right horizontal
-            "upper_left_y": 250,
-            "lower_right_x": 900,
-            "lower_right_y": 270,
+            "upper_left_x": 350,  #right horizontal
+            "upper_left_y": 430,
+            "lower_right_x": 600,
+            "lower_right_y": 450,
         }
     ]
 

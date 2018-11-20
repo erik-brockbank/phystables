@@ -7,7 +7,7 @@ Scenario: scenario 1
 Variable: containment level 1
 Complexity: complexity level 1
 
-Status: Incomplete
+Status: Complete
 Assigned to: Christine
 Last updated: 11/15
 
