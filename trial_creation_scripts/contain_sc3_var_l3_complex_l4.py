@@ -132,9 +132,9 @@ def add_walls(trial):
         },
         {
             "upper_left_x": 200,    #obstacle 4
-            "upper_left_y": 390, 
+            "upper_left_y": 350, 
             "lower_right_x": 240, 
-            "lower_right_y": 430,
+            "lower_right_y": 390,
         },
         {
             "upper_left_x": 160,    #obstacle 5
