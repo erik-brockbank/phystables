@@ -111,6 +111,54 @@ def add_walls(trial):
             "upper_left_y": 230, 
             "lower_right_x": 350, 
             "lower_right_y": 250,
+        },
+        {
+            "upper_left_x": 180,    #obstacle 1
+            "upper_left_y": 490, 
+            "lower_right_x": 220, 
+            "lower_right_y": 530,
+        },
+        {
+            "upper_left_x": 360,    #obstacle 2
+            "upper_left_y": 300, 
+            "lower_right_x": 400, 
+            "lower_right_y": 340,
+        },
+        {
+            "upper_left_x": 5,    #obstacle 3
+            "upper_left_y": 500, 
+            "lower_right_x": 45, 
+            "lower_right_y": 540,
+        },
+        {
+            "upper_left_x": 200,    #obstacle 4
+            "upper_left_y": 390, 
+            "lower_right_x": 240, 
+            "lower_right_y": 430,
+        },
+        {
+            "upper_left_x": 160,    #obstacle 5
+            "upper_left_y": 100, 
+            "lower_right_x": 200, 
+            "lower_right_y": 140,
+        },
+        {
+            "upper_left_x": 440,    #obstacle 6
+            "upper_left_y": 80, 
+            "lower_right_x": 480, 
+            "lower_right_y": 120,
+        },
+        {
+            "upper_left_x": 520,    #obstacle 7
+            "upper_left_y": 490, 
+            "lower_right_x": 560, 
+            "lower_right_y": 530,
+        },
+        {
+            "upper_left_x": 300,    #obstacle 8
+            "upper_left_y": 180, 
+            "lower_right_x": 340, 
+            "lower_right_y": 220,
         }
     ]
 

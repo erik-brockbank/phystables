@@ -126,6 +126,12 @@ def add_walls(trial):
             "upper_left_y": 430,
             "lower_right_x": 600,
             "lower_right_y": 450,
+        },
+        {
+            "upper_left_x": 360,  #obstacle 1
+            "upper_left_y": 480,
+            "lower_right_x": 400,
+            "lower_right_y": 520,
         }
     ]
 

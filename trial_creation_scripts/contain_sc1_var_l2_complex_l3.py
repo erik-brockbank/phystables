@@ -7,11 +7,11 @@ Scenario: scenario 1
 Variable: containment level 2
 Complexity: complexity level 3
 
-Status: Incomplete
+Status: complete
 Assigned to: Christine 
-Last updated: 11/19
+Last updated: 11/28
 
-Notes: same as sc1 containment 2 complexity 1
+Notes: 
 
 """
 import random
@@ -129,6 +129,18 @@ def add_walls(trial):
             "upper_left_y": 130, 
             "lower_right_x": 570, 
             "lower_right_y": 550, 
+        },
+        {          
+            "upper_left_x": 220,     #obstacle1
+            "upper_left_y": 380, 
+            "lower_right_x": 260, 
+            "lower_right_y": 420, 
+        },
+        {          
+            "upper_left_x": 400,     #obstacle2
+            "upper_left_y": 200, 
+            "lower_right_x": 440, 
+            "lower_right_y": 240, 
         }
     ]
 

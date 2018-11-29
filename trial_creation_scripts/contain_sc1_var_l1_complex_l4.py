@@ -7,11 +7,11 @@ Scenario: scenario 1
 Variable: containment level 1
 Complexity: complexity level 4
 
-Status: Incomplete
+Status: complete
 Assigned to: Christine
-Last updated: 11/19
+Last updated: 11/28
 
-Notes: same as sc1 containment 1 comlexity 1
+Notes: 
 
 """
 import random
@@ -130,7 +130,55 @@ def add_walls(trial):
             "upper_left_y": 130, 
             "lower_right_x": 570, 
             "lower_right_y": 550, 
-        }
+        },
+        {          
+            "upper_left_x": 220,     #obstacle1
+            "upper_left_y": 380, 
+            "lower_right_x": 260, 
+            "lower_right_y": 420, 
+        },
+        {          
+            "upper_left_x": 400,     #obstacle2
+            "upper_left_y": 200, 
+            "lower_right_x": 440, 
+            "lower_right_y": 240, 
+        },
+        {          
+            "upper_left_x": 400,     #obstacle3
+            "upper_left_y": 460, 
+            "lower_right_x": 440, 
+            "lower_right_y": 500, 
+        },
+        {          
+            "upper_left_x": 150,     #obstacle4
+            "upper_left_y": 30, 
+            "lower_right_x": 190, 
+            "lower_right_y": 70, 
+        },
+        {          
+            "upper_left_x": 500,     #obstacle5
+            "upper_left_y": 50, 
+            "lower_right_x": 540, 
+            "lower_right_y": 90, 
+        },
+        {          
+            "upper_left_x": 130,     #obstacle6
+            "upper_left_y": 200, 
+            "lower_right_x": 170, 
+            "lower_right_y": 240, 
+        },
+        {          
+            "upper_left_x": 280,     #obstacle7
+            "upper_left_y": 300, 
+            "lower_right_x": 320, 
+            "lower_right_y": 340, 
+        },
+        {          
+            "upper_left_x": 100,     #obstacle8
+            "upper_left_y": 350, 
+            "lower_right_x": 140, 
+            "lower_right_y": 390, 
+        },
     ]
 
     # Add each wall in the `walls_list` above to the trial

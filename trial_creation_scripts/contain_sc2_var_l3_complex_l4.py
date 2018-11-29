@@ -126,7 +126,8 @@ def add_walls(trial):
             "upper_left_y": 430,
             "lower_right_x": 600,
             "lower_right_y": 450,
-        }
+        },
+        
     ]
 
     # Add each wall in the `walls_list` above to the trial

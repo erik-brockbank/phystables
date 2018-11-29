@@ -8,8 +8,8 @@ Variable: containment level 3
 Complexity: complexity level 4
 
 Status: Incomplete
-Assigned to:
-Last updated:
+Assigned to: Juliet
+Last updated: 11/27
 
 Notes:
 
@@ -31,8 +31,8 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = "" # TODO replace these "" with a number and delete this comment!
-    ball_y = "" # TODO replace these "" with a number and delete this comment!
+    ball_x = 140
+    ball_y = 200 
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
