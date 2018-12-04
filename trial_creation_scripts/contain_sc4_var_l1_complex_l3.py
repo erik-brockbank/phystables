@@ -7,9 +7,9 @@ Scenario: scenario 4
 Variable: containment level 1
 Complexity: complexity level 3
 
-Status: Incomplete
-Assigned to: Juliet
-Last updated: 11/27
+Status: complete
+Assigned to: Juliet - Christine
+Last updated: 12/3
 
 Notes:
 
@@ -31,8 +31,8 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = 140
-    ball_y = 200 
+    ball_x = 100
+    ball_y = 400
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
@@ -47,18 +47,18 @@ def add_targets(trial):
         with a number indicating the upper left or bottom right X or Y value
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_1_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_1_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_1_upper_left_x = 180
+    target_1_upper_left_y = 50
+    target_1_lower_right_x = target_1_upper_left_x + TARGET_LENGTH
+    target_1_lower_right_y = target_1_upper_left_y + TARGET_WIDTH
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_2_upper_left_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_upper_left_y = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_x = "" # TODO replace these "" with a number and delete this comment!
-    target_2_lower_right_y = "" # TODO replace these "" with a number and delete this comment!
+    target_2_upper_left_x = 480
+    target_2_upper_left_y = 110 
+    target_2_lower_right_x = target_2_upper_left_x + TARGET_LENGTH 
+    target_2_lower_right_y = target_2_upper_left_y + TARGET_WIDTH
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -89,7 +89,7 @@ def add_targets(trial):
     )
 
 
-# TODO fill in this function and delete this comment once it's complete
+
 def add_walls(trial):
     """
     This function adds the walls to the proper place for this trial.
@@ -102,10 +102,22 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": "", # TODO replace these "" with a number and delete this comment!
-            "upper_left_y": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_x": "", # TODO replace these "" with a number and delete this comment!
-            "lower_right_y": "", # TODO replace these "" with a number and delete this comment!
+            "upper_left_x": 0, 
+            "upper_left_y": 140, 
+            "lower_right_x": 450, 
+            "lower_right_y": 140 + WALL_WIDTH, 
+        },
+        {
+            "upper_left_x": 400,    #obstacle 1
+            "upper_left_y": 350, 
+            "lower_right_x": 400 + WALL_WIDTH*2, 
+            "lower_right_y": 350 + WALL_WIDTH*2, 
+        },
+        {
+            "upper_left_x": 170,    #obstacle 2
+            "upper_left_y": 530, 
+            "lower_right_x": 170 + WALL_WIDTH*2, 
+            "lower_right_y": 530 + WALL_WIDTH*2, 
         },
         # Individual wall definition ends above this line
     ]

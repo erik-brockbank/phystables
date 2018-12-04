@@ -7,11 +7,11 @@ Scenario: scenario 2
 Variable: containment level 2
 Complexity: complexity level 4
 
-Status: Incomplete
+Status: complete
 Assigned to: Christine
-Last updated: 11/19
+Last updated: 12/3
 
-Notes: same as sc2 containment 2 complexity 1 
+Notes: 
 
 """
 import random
@@ -126,6 +126,54 @@ def add_walls(trial):
             "upper_left_y": 430,
             "lower_right_x": 600,
             "lower_right_y": 450,
+        },
+        {
+            "upper_left_x": 360,  #obstacle 1
+            "upper_left_y": 480,
+            "lower_right_x": 400,
+            "lower_right_y": 520,
+        },
+         {
+            "upper_left_x": 200,  #obstacle 2
+            "upper_left_y": 540,
+            "lower_right_x": 240,
+            "lower_right_y": 580,
+        },
+        {
+            "upper_left_x": 500,  #obstacle 3
+            "upper_left_y": 550,
+            "lower_right_x": 540,
+            "lower_right_y": 590,
+        },
+        {
+            "upper_left_x": 20,  #obstacle 4
+            "upper_left_y": 500,
+            "lower_right_x": 20 + WALL_WIDTH*2,
+            "lower_right_y": 500 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 100,  #obstacle 5
+            "upper_left_y": 40 ,
+            "lower_right_x": 100 + WALL_WIDTH*2,
+            "lower_right_y": 40 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 400,  #obstacle 6
+            "upper_left_y": 100,
+            "lower_right_x": 400 + WALL_WIDTH*2,
+            "lower_right_y": 100 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 500,  #obstacle 7
+            "upper_left_y": 300,
+            "lower_right_x": 500 + WALL_WIDTH*2,
+            "lower_right_y": 300 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 180,  #obstacle 8
+            "upper_left_y": 280,
+            "lower_right_x": 180 + WALL_WIDTH*2,
+            "lower_right_y": 280 + WALL_WIDTH*2,
         }
     ]
 
