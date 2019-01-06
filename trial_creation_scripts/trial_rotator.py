@@ -15,6 +15,21 @@ def print_json(file_json):
         file_json.normwalls
     ))
 
+def get_filenames(filepath):
+    file_list = []
+    for (dirpath, dirnames, filenames) in os.walk(filepath):
+        for file in filenames:
+            # TODO this is a hacky way to deal with these exclusions...
+            if "json" in file and \
+                file not in file_list and \
+                "TEMPLATE" not in file and \
+                "LEFT" not in file and \
+                "RIGHT" not in file and \
+                "TWICE" not in file:
+                file_list.append(file)
+    file_list = sorted(file_list)
+    return file_list
+
 def read_file(filename, filepath):
     read_file = os.path.join(filepath, filename)
     file_json = load_trial(read_file)
@@ -192,27 +207,26 @@ def rotate_trial_twice(filejson):
 
 
 def main():
-    # TODO fetch filenames dynamically
-    filename = "contain_sc1_var_l1_complex_l1"
-    filename_ext = filename + ".json"
+    file_list = get_filenames(TRIAL_PATH)
+    for filename in file_list:
+        print("Processing file: {}".format(filename))
+        file_parsed = read_file(filename, TRIAL_PATH)
+        file_rotated_left = rotate_trial_left(copy.deepcopy(file_parsed))
+        file_rotated_right = rotate_trial_right(copy.deepcopy(file_parsed))
+        file_rotated_twice = rotate_trial_twice(copy.deepcopy(file_parsed))
 
-    file_parsed = read_file(filename_ext, TRIAL_PATH)
-    file_rotated_left = rotate_trial_left(copy.deepcopy(file_parsed))
-    file_rotated_right = rotate_trial_right(copy.deepcopy(file_parsed))
-    file_rotated_twice = rotate_trial_twice(copy.deepcopy(file_parsed))
+        # print("Original file:")
+        # print_json(file_parsed)
+        # print("Rotated file (left):")
+        # print_json(file_rotated_left)
+        # print("Rotated file (right):")
+        # print_json(file_rotated_right)
+        # print("Rotated file (twice):")
+        # print_json(file_rotated_twice)
 
-    print("Original file:")
-    print_json(file_parsed)
-    print("Rotated file (left):")
-    print_json(file_rotated_left)
-    print("Rotated file (right):")
-    print_json(file_rotated_right)
-    print("Rotated file (twice):")
-    print_json(file_rotated_twice)
-
-    write_file(TRIAL_PATH, file_rotated_left)
-    write_file(TRIAL_PATH, file_rotated_right)
-    write_file(TRIAL_PATH, file_rotated_twice)
+        write_file(TRIAL_PATH, file_rotated_left)
+        write_file(TRIAL_PATH, file_rotated_right)
+        write_file(TRIAL_PATH, file_rotated_twice)
 
 
 
