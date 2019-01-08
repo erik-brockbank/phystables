@@ -5,11 +5,11 @@ Trial Info
 Theme: containment
 Scenario: scenario 3
 Variable: containment level 1
-Complexity: complexity level 2
+Complexity: complexity level 4
 
 Status: complete
 Assigned to: Christine
-Last updated: 11/28
+Last updated: 12/3
 
 Notes:
 
@@ -23,7 +23,7 @@ from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
                                               TARGET_LENGTH, TARGET_WIDTH,
                                               TRIAL_DIMS, WALL_WIDTH)
 
-TRIAL_NAME = "contain_sc3_var_l1_complex_l2"
+TRIAL_NAME = "contain_sc3_var_l1_complex_l4_distractor"
 
 
 def add_ball(trial):
@@ -49,10 +49,10 @@ def add_targets(trial):
         with a number indicating the upper left or bottom right X or Y value
     """
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_1_upper_left_x = 370
-    target_1_upper_left_y = 500
-    target_1_lower_right_x = 420
-    target_1_lower_right_y = 600
+    target_1_upper_left_x = 150
+    target_1_upper_left_y = 200
+    target_1_lower_right_x = target_1_upper_left_x + TARGET_LENGTH
+    target_1_lower_right_y = target_1_upper_left_y + TARGET_WIDTH
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
@@ -120,6 +120,48 @@ def add_walls(trial):
             "upper_left_y": 490,
             "lower_right_x": 220,
             "lower_right_y": 530,
+        },
+        {
+            "upper_left_x": 360,    #obstacle 2
+            "upper_left_y": 300,
+            "lower_right_x": 400,
+            "lower_right_y": 340,
+        },
+        {
+            "upper_left_x": 0,    #obstacle 3
+            "upper_left_y": 490,
+            "lower_right_x": 40,
+            "lower_right_y": 530,
+        },
+        {
+            "upper_left_x": 200,    #obstacle 4
+            "upper_left_y": 350,
+            "lower_right_x": 240,
+            "lower_right_y": 390,
+        },
+        {
+            "upper_left_x": 160,    #obstacle 5
+            "upper_left_y": 100,
+            "lower_right_x": 200,
+            "lower_right_y": 140,
+        },
+        {
+            "upper_left_x": 440,    #obstacle 6
+            "upper_left_y": 80,
+            "lower_right_x": 480,
+            "lower_right_y": 120,
+        },
+        {
+            "upper_left_x": 520,    #obstacle 7
+            "upper_left_y": 450,
+            "lower_right_x": 560,
+            "lower_right_y": 490,
+        },
+        {
+            "upper_left_x": 300,    #obstacle 8
+            "upper_left_y": 180,
+            "lower_right_x": 340,
+            "lower_right_y": 220,
         }
     ]
 

@@ -11,14 +11,17 @@ Status: complete
 Assigned to: Christine
 Last updated: 11/28
 
-Notes: 
+Notes:
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
-from phystables.trials import RedGreenTrial
-from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
+from phystables.constants import GREEN, GREENGOAL, RED, REDGOAL
+from phystables.trials import RedGreenTrial
+
+from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
+                                              TARGET_LENGTH, TARGET_WIDTH,
+                                              TRIAL_DIMS, WALL_WIDTH)
 
 TRIAL_NAME = "contain_sc3_var_l1_complex_l3"
 
@@ -48,8 +51,8 @@ def add_targets(trial):
     # target 1 X,Y coordinates assigned to upper left and lower right corners of the target
     target_1_upper_left_x = 370
     target_1_upper_left_y = 500
-    target_1_lower_right_x = 420 
-    target_1_lower_right_y = 600 
+    target_1_lower_right_x = 420
+    target_1_lower_right_y = 600
     target_1_upper_left_coords = [target_1_upper_left_x, target_1_upper_left_y]
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
@@ -102,26 +105,26 @@ def add_walls(trial):
         # Individual wall definition starts below this line
         {
             "upper_left_x": 100,    #vertical
-            "upper_left_y": 0, 
-            "lower_right_x": 120, 
+            "upper_left_y": 0,
+            "lower_right_x": 120,
             "lower_right_y": 430,
         },
         {
             "upper_left_x": 100,    #horizontal
-            "upper_left_y": 430, 
-            "lower_right_x": 350, 
+            "upper_left_y": 430,
+            "lower_right_x": 350,
             "lower_right_y": 450,
         },
         {
             "upper_left_x": 180,    #obstacle 1
-            "upper_left_y": 490, 
-            "lower_right_x": 220, 
+            "upper_left_y": 490,
+            "lower_right_x": 220,
             "lower_right_y": 530,
         },
         {
             "upper_left_x": 360,    #obstacle 2
-            "upper_left_y": 300, 
-            "lower_right_x": 400, 
+            "upper_left_y": 300,
+            "lower_right_x": 400,
             "lower_right_y": 340,
         }
     ]
