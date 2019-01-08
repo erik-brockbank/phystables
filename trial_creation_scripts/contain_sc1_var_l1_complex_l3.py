@@ -11,14 +11,17 @@ Status: Complete
 Assigned to: Christine
 Last updated: 11/28
 
-Notes: 
+Notes:
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
-from phystables.trials import RedGreenTrial
-from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
+from phystables.constants import GREEN, GREENGOAL, RED, REDGOAL
+from phystables.trials import RedGreenTrial
+
+from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
+                                              TARGET_LENGTH, TARGET_WIDTH,
+                                              TRIAL_DIMS, WALL_WIDTH)
 
 TRIAL_NAME = "contain_sc1_var_l1_complex_l3"
 
@@ -31,8 +34,8 @@ def add_ball(trial):
     1. Add the proper X,Y coordinate values for the ball by replacing each ""
         with a number indicating the X or Y value
     """
-    ball_x = 120 
-    ball_y = 300 
+    ball_x = 120
+    ball_y = 300
     trial.add_ball(initpos = [ball_x, ball_y], initvel = BALL_VELOCITY)
 
 
@@ -56,9 +59,9 @@ def add_targets(trial):
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
     target_2_upper_left_x = 250
-    target_2_upper_left_y = 80 
-    target_2_lower_right_x = 350 
-    target_2_lower_right_y = 130 
+    target_2_upper_left_y = 80
+    target_2_lower_right_x = 350
+    target_2_lower_right_y = 130
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -98,51 +101,51 @@ def add_walls(trial):
     2. Add subsequent walls by copying the wall you filled in (including the `{` and `}`), then
         pasting it immediately below your existing wall(s) and putting the proper X,Y coords for the new wall
     """
-    
+
     walls_list = [
         # Individual wall definition starts below this line
         {
             "upper_left_x": 30,  #upper left  wall width: 20
-            "upper_left_y": 110, 
-            "lower_right_x": 220, 
-            "lower_right_y": 130, 
+            "upper_left_y": 110,
+            "lower_right_x": 220,
+            "lower_right_y": 130,
         },
         # Individual wall definition ends above this line
         {
             "upper_left_x": 380,  #upper right
-            "upper_left_y": 110, 
-            "lower_right_x": 570, 
-            "lower_right_y": 130, 
+            "upper_left_y": 110,
+            "lower_right_x": 570,
+            "lower_right_y": 130,
         },
         {
             "upper_left_x": 30,   #left
-            "upper_left_y": 130, 
-            "lower_right_x": 50, 
-            "lower_right_y": 550, 
+            "upper_left_y": 130,
+            "lower_right_x": 50,
+            "lower_right_y": 550,
         },
         {
             "upper_left_x": 50,    #bottom
-            "upper_left_y": 530, 
-            "lower_right_x": 570, 
-            "lower_right_y": 550, 
+            "upper_left_y": 530,
+            "lower_right_x": 570,
+            "lower_right_y": 550,
         },
         {
             "upper_left_x": 550,    #right
-            "upper_left_y": 130, 
-            "lower_right_x": 570, 
-            "lower_right_y": 550, 
+            "upper_left_y": 130,
+            "lower_right_x": 570,
+            "lower_right_y": 550,
         },
-        {          
+        {
             "upper_left_x": 220,     #obstacle1
-            "upper_left_y": 380, 
-            "lower_right_x": 260, 
-            "lower_right_y": 420, 
+            "upper_left_y": 380,
+            "lower_right_x": 260,
+            "lower_right_y": 420,
         },
-        {          
+        {
             "upper_left_x": 400,     #obstacle2
-            "upper_left_y": 200, 
-            "lower_right_x": 440, 
-            "lower_right_y": 240, 
+            "upper_left_y": 200,
+            "lower_right_x": 440,
+            "lower_right_y": 240,
         }
     ]
 

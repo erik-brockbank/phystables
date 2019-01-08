@@ -15,10 +15,13 @@ Notes:
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
-from phystables.trials import RedGreenTrial
-from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
+from phystables.constants import GREEN, GREENGOAL, RED, REDGOAL
+from phystables.trials import RedGreenTrial
+
+from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
+                                              TARGET_LENGTH, TARGET_WIDTH,
+                                              TRIAL_DIMS, WALL_WIDTH)
 
 TRIAL_NAME = "TEMPLATE"
 
