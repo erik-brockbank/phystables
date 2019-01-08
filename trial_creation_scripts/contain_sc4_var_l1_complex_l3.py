@@ -15,10 +15,13 @@ Notes:
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
-from phystables.trials import RedGreenTrial
-from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
+from phystables.constants import GREEN, GREENGOAL, RED, REDGOAL
+from phystables.trials import RedGreenTrial
+
+from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
+                                              TARGET_LENGTH, TARGET_WIDTH,
+                                              TRIAL_DIMS, WALL_WIDTH)
 
 TRIAL_NAME = "contain_sc4_var_l1_complex_l3"
 
@@ -56,8 +59,8 @@ def add_targets(trial):
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
     target_2_upper_left_x = 480
-    target_2_upper_left_y = 110 
-    target_2_lower_right_x = target_2_upper_left_x + TARGET_LENGTH 
+    target_2_upper_left_y = 110
+    target_2_lower_right_x = target_2_upper_left_x + TARGET_LENGTH
     target_2_lower_right_y = target_2_upper_left_y + TARGET_WIDTH
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
@@ -102,22 +105,22 @@ def add_walls(trial):
     walls_list = [
         # Individual wall definition starts below this line
         {
-            "upper_left_x": 0, 
-            "upper_left_y": 140, 
-            "lower_right_x": 450, 
-            "lower_right_y": 140 + WALL_WIDTH, 
+            "upper_left_x": 0,
+            "upper_left_y": 140,
+            "lower_right_x": 450,
+            "lower_right_y": 140 + WALL_WIDTH,
         },
         {
             "upper_left_x": 400,    #obstacle 1
-            "upper_left_y": 350, 
-            "lower_right_x": 400 + WALL_WIDTH*2, 
-            "lower_right_y": 350 + WALL_WIDTH*2, 
+            "upper_left_y": 350,
+            "lower_right_x": 400 + WALL_WIDTH*2,
+            "lower_right_y": 350 + WALL_WIDTH*2,
         },
         {
             "upper_left_x": 170,    #obstacle 2
-            "upper_left_y": 530, 
-            "lower_right_x": 170 + WALL_WIDTH*2, 
-            "lower_right_y": 530 + WALL_WIDTH*2, 
+            "upper_left_y": 530,
+            "lower_right_x": 170 + WALL_WIDTH*2,
+            "lower_right_y": 530 + WALL_WIDTH*2,
         },
         # Individual wall definition ends above this line
     ]

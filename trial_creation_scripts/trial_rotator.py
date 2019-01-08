@@ -207,7 +207,12 @@ def rotate_trial_twice(filejson):
 
 
 def main():
+    # file_list = ["contain_sc4_var_l1_complex_l1_distractor.json",
+    #     "contain_sc4_var_l1_complex_l2_distractor.json",
+    #     "contain_sc4_var_l1_complex_l3_distractor.json",
+    #     "contain_sc4_var_l1_complex_l4_distractor.json"]
     file_list = get_filenames(TRIAL_PATH)
+
     for filename in file_list:
         print("Processing file: {}".format(filename))
         file_parsed = read_file(filename, TRIAL_PATH)
