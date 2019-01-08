@@ -8,17 +8,20 @@ Variable: containment level 1
 Complexity: complexity level 3
 
 Status: complete
-Assigned to: Christine 
+Assigned to: Christine
 Last updated: 11/28
 
-Notes: 
+Notes:
 
 """
 import random
-from constants import BALL_VELOCITY, SAVED_TRIAL_DIR, TARGET_LENGTH, TARGET_WIDTH, TRIAL_DIMS, WALL_WIDTH
-from phystables.trials import RedGreenTrial
-from phystables.constants import GREENGOAL, GREEN, REDGOAL, RED
 
+from phystables.constants import GREEN, GREENGOAL, RED, REDGOAL
+from phystables.trials import RedGreenTrial
+
+from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
+                                              TARGET_LENGTH, TARGET_WIDTH,
+                                              TRIAL_DIMS, WALL_WIDTH)
 
 TRIAL_NAME = "contain_sc2_var_l1_complex_l3"
 
@@ -58,7 +61,7 @@ def add_targets(trial):
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
     target_2_upper_left_x = 250
     target_2_upper_left_y = 100
-    target_2_lower_right_x = 350  
+    target_2_lower_right_x = 350
     target_2_lower_right_y = 150
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]

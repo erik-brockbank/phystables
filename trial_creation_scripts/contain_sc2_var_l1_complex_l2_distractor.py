@@ -23,7 +23,7 @@ from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
                                               TARGET_LENGTH, TARGET_WIDTH,
                                               TRIAL_DIMS, WALL_WIDTH)
 
-TRIAL_NAME = "contain_sc2_var_l1_complex_l2"
+TRIAL_NAME = "contain_sc2_var_l1_complex_l2_distractor"
 
 
 def add_ball(trial):
@@ -59,10 +59,10 @@ def add_targets(trial):
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_2_upper_left_x = 250
-    target_2_upper_left_y = 100
-    target_2_lower_right_x = 350
-    target_2_lower_right_y = 150
+    target_2_upper_left_x = 450
+    target_2_upper_left_y = 30
+    target_2_lower_right_x = target_2_upper_left_x + TARGET_LENGTH
+    target_2_lower_right_y = target_2_upper_left_y + TARGET_WIDTH
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 

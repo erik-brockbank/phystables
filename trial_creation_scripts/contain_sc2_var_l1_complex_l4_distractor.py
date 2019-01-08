@@ -5,13 +5,13 @@ Trial Info
 Theme: containment
 Scenario: scenario 2
 Variable: containment level 1
-Complexity: complexity level 2
+Complexity: complexity level 4
 
-Status: Incomplete
+Status: complete
 Assigned to: Christine
-Last updated: 11/19
+Last updated: 12/3
 
-Notes: same as sc2 containment 1 complexity 1
+Notes:
 
 """
 import random
@@ -23,7 +23,7 @@ from trial_creation_scripts.constants import (BALL_VELOCITY, SAVED_TRIAL_DIR,
                                               TARGET_LENGTH, TARGET_WIDTH,
                                               TRIAL_DIMS, WALL_WIDTH)
 
-TRIAL_NAME = "contain_sc2_var_l1_complex_l2"
+TRIAL_NAME = "contain_sc2_var_l1_complex_l4_distractor"
 
 
 def add_ball(trial):
@@ -59,10 +59,10 @@ def add_targets(trial):
     target_1_lower_right_coords = [target_1_lower_right_x, target_1_lower_right_y]
 
     # target 2 X,Y coordinates assigned to upper left and lower right corners of the target
-    target_2_upper_left_x = 250
-    target_2_upper_left_y = 100
-    target_2_lower_right_x = 350
-    target_2_lower_right_y = 150
+    target_2_upper_left_x = 450
+    target_2_upper_left_y = 30
+    target_2_lower_right_x = target_2_upper_left_x + TARGET_LENGTH
+    target_2_lower_right_y = target_2_upper_left_y + TARGET_WIDTH
     target_2_upper_left_coords = [target_2_upper_left_x, target_2_upper_left_y]
     target_2_lower_right_coords = [target_2_lower_right_x, target_2_lower_right_y]
 
@@ -135,7 +135,50 @@ def add_walls(trial):
             "upper_left_y": 480,
             "lower_right_x": 400,
             "lower_right_y": 520,
+        },
+         {
+            "upper_left_x": 200,  #obstacle 2
+            "upper_left_y": 540,
+            "lower_right_x": 240,
+            "lower_right_y": 580,
+        },
+        {
+            "upper_left_x": 500,  #obstacle 3
+            "upper_left_y": 550,
+            "lower_right_x": 540,
+            "lower_right_y": 590,
+        },
+        {
+            "upper_left_x": 20,  #obstacle 4
+            "upper_left_y": 500,
+            "lower_right_x": 20 + WALL_WIDTH*2,
+            "lower_right_y": 500 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 100,  #obstacle 5
+            "upper_left_y": 40 ,
+            "lower_right_x": 100 + WALL_WIDTH*2,
+            "lower_right_y": 40 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 400,  #obstacle 6
+            "upper_left_y": 100,
+            "lower_right_x": 400 + WALL_WIDTH*2,
+            "lower_right_y": 100 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 500,  #obstacle 7
+            "upper_left_y": 300,
+            "lower_right_x": 500 + WALL_WIDTH*2,
+            "lower_right_y": 300 + WALL_WIDTH*2,
+        },
+        {
+            "upper_left_x": 180,  #obstacle 8
+            "upper_left_y": 280,
+            "lower_right_x": 180 + WALL_WIDTH*2,
+            "lower_right_y": 280 + WALL_WIDTH*2,
         }
+
     ]
 
     # Add each wall in the `walls_list` above to the trial
