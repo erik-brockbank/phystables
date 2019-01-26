@@ -21,9 +21,10 @@ class PointSimulation(object):
         self.nsims = nsims
         self.ts = timeres
 
-        self.outcomes = None
-        self.endpts = None
-        self.bounces = None
+        self.outcomes = []
+        self.endpts = []
+        self.bounces = []
+        self.tsims = []
         self.run = False
         self.enend = ensure_end
 
@@ -33,17 +34,17 @@ class PointSimulation(object):
     def single_sim(self, i):
         n = make_noisy(self.tab, self.kapv, self.kapb, self.kapm, self.perr)
         n.set_timestep(self.ts)
-        r = n.simulate(self.maxtime)
+        r = n.simulate(maxtime = self.maxtime, timeres = self.ts) # works for outcomes, not bounces/time
         p = n.balls.getpos()
         nb = n.balls.bounces
         rp = (p[0], p[1])
         if self.enend:
             if r == TIMEUP:
                 self.badsims += 1
-                return(self.singleSim(i))
+                return(self.single_sim(i))
             if rp[0] < 0 or rp[0] > self.tab.dim[0] or rp[1] < 0 or rp[1] > self.tab.dim[1]:
                 self.badsims += 1
-                return(self.singleSim(i))
+                return(self.single_sim(i))
         return [r, rp, nb, n.tm]
 
     def run_simulation(self):
@@ -53,10 +54,11 @@ class PointSimulation(object):
         else:
             ret = async_map(self.single_sim, range(self.nsims), self.ucpus)
 
-        self.outcomes = [r[0] for r in ret]
-        self.endpts = [r[1] for r in ret]
-        self.bounces = [r[2] for r in ret]
-        self.tsims = [r[3] for r in ret]
+        for r in ret:
+            self.outcomes.append(r[0])
+            self.endpts.append(r[1])
+            self.bounces.append(r[2])
+            self.tsims.append(r[3])
         self.run = True
 
         return [self.outcomes, self.endpts, self.bounces, self.tsims]

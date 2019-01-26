@@ -91,6 +91,7 @@ class SimpleTable(BasicTable):
 
     def simulate(self, maxtime=50., timeres=None, return_path=False,
                  return_bounces=False, rp_wid=None):
+        # print("calling simple table simulate, return_bounces = {}, return_path = {}".format(return_bounces, return_path))
         if timeres is None:
             timeres = self.basicts
         if return_path:
