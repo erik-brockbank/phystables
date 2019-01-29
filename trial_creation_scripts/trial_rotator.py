@@ -211,11 +211,13 @@ def main():
     #     "contain_sc4_var_l1_complex_l2_distractor.json",
     #     "contain_sc4_var_l1_complex_l3_distractor.json",
     #     "contain_sc4_var_l1_complex_l4_distractor.json"]
+
     file_list = get_filenames(TRIAL_PATH)
 
     for filename in file_list:
         print("Processing file: {}".format(filename))
         file_parsed = read_file(filename, TRIAL_PATH)
+
         file_rotated_left = rotate_trial_left(copy.deepcopy(file_parsed))
         file_rotated_right = rotate_trial_right(copy.deepcopy(file_parsed))
         file_rotated_twice = rotate_trial_twice(copy.deepcopy(file_parsed))

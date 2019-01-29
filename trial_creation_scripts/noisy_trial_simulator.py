@@ -7,13 +7,36 @@ from phystables.trials import load_trial, RedGreenTrial
 
 
 TRIAL_PATH = "saved_trials"
-TRIAL_NAME = "contain_sc1_var_l1_complex_l1" # TODO take this as input arg
 
 OUTPUT_FILE = "containment_sims.csv" # name of csv file to write to
 CSV_HEADER = ["trialname", "outcome", "endpoint_x", "endpoint_y", "bounces", "tsims"]
 
 DEFAULTVEL = [175, 180]
 
+MODIFIED_TRIALS = {
+    "contain_sc1_var_l1_complex_l2_LEFT": [175, -175],
+    "contain_sc1_var_l1_complex_l2_RIGHT": [-175, 175],
+    "contain_sc1_var_l1_complex_l3": [175, 180],
+    "contain_sc1_var_l1_complex_l3_LEFT": [175, -175],
+    "contain_sc1_var_l1_complex_l3_RIGHT": [-175, 175],
+    "contain_sc1_var_l1_complex_l4_LEFT": [175, -175],
+    "contain_sc1_var_l1_complex_l4_RIGHT": [-175, 175],
+    "contain_sc1_var_l2_complex_l4_LEFT": [175, -175],
+    "contain_sc1_var_l2_complex_l4_RIGHT": [-175, 175],
+    "contain_sc2_var_l1_complex_l3": [175, 180],
+    "contain_sc2_var_l1_complex_l3_LEFT": [175, -170],
+    "contain_sc2_var_l1_complex_l3_RIGHT": [-175, 170],
+    "contain_sc3_var_l3_complex_l4_LEFT": [175, -175],
+    "contain_sc3_var_l3_complex_l4_RIGHT": [-175, 175],
+    "contain_sc4_var_l1_complex_l2": [175, 175],
+    "contain_sc4_var_l1_complex_l2_LEFT": [175, -175],
+    "contain_sc4_var_l1_complex_l2_RIGHT": [-175, 175],
+    "contain_sc4_var_l1_complex_l2_TWICE": [-175, -175],
+    "contain_sc4_var_l2_complex_l2": [175, 175],
+    "contain_sc4_var_l2_complex_l2_LEFT": [175, -175],
+    "contain_sc4_var_l2_complex_l2_RIGHT": [-175, 175],
+    "contain_sc4_var_l2_complex_l2_TWICE": [-175, -175]
+}
 
 def write_to_csv(simname, sim_outcomes, csvwriter):
     for i in range(len(sim_outcomes["outcomes"])):
@@ -30,27 +53,27 @@ def write_to_csv(simname, sim_outcomes, csvwriter):
         csvwriter.writerow(writedata)
 
 
-def get_ball_vel(currvel):
+def get_ball_vel(trialname, currvel):
     newvel = DEFAULTVEL
     # NB: this logic largely copied from similar default handling in phystables_env: objects.js
-    if abs(currvel[0]) == 1 or abs(currvel[1]) == 1:
+    if trialname in MODIFIED_TRIALS:
+        # Ball has velocities overriding default from trial creation process
+        newvel = MODIFIED_TRIALS[trialname]
+    elif abs(currvel[0]) == 1 or abs(currvel[1]) == 1:
         # Ball has default velocities from trial creation process (e.g. [1, -1])
         newvel = [DEFAULTVEL[0] * currvel[0], DEFAULTVEL[1] * currvel[1]]
-    elif abs(currvel[0]) >= 10 or abs(currvel[1]) >= 10:
-        # Ball has velocities overriding default from trial creation process
-        newvel = currvel
 
     return newvel
 
 
-def get_simulation_outcomes(filepath):
+def get_simulation_outcomes(trialname, filepath):
     rgtrial = load_trial(filepath)
     # correct ball velocity
-    # TODO handle velocity exceptions in particular scenarios
-    rgtrial.ball = (rgtrial.ball[0],) + (get_ball_vel(rgtrial.ball[1]),) + (rgtrial.ball[2:len(rgtrial.ball)])
+    new_vel = get_ball_vel(trialname, rgtrial.ball[1])
+    rgtrial.ball = (rgtrial.ball[0],) + (new_vel,) + (rgtrial.ball[2:len(rgtrial.ball)])
     # make table and simulation object
     rgtable = rgtrial.make_table()
-    ps = PointSimulation(rgtable, cpus = 1) # NB: without cpu arg, async_map call in point_simulation fails
+    ps = PointSimulation(rgtable, maxtime = 10, cpus = 1) # NB: without cpu arg, async_map call in point_simulation fails
     sim = ps.run_simulation()
 
     assert(len(sim[0]) == len(sim[1]) == len(sim[2]) == len(sim[3]))
@@ -75,11 +98,12 @@ def main():
     print("Reading in files at {}. Num files: {}".format(TRIAL_PATH, len(files)))
 
     # simulate trials and write results
+    files = sorted(files)
     for f in files:
         trialname = f.split('.')[0]
         read_file = os.path.join(TRIAL_PATH, f)
         print("Running simulations for {}".format(read_file))
-        sim_outcomes = get_simulation_outcomes(read_file)
+        sim_outcomes = get_simulation_outcomes(trialname, read_file)
 
         print("Writing {} to csv at: {}".format(trialname, OUTPUT_FILE))
         write_to_csv(trialname, sim_outcomes, csvwriter)
