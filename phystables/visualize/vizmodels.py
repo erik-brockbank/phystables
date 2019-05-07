@@ -1,7 +1,11 @@
-from ..models import *
+# from ..models import *
+from ..models.point_simulation import *
+import pygame as pg
+from ..visualize.matpltPygame import pgFig
 
 def psdraw_density(self, rp_wid = 5, greyscale = (0,255), gamadj = .2):
-    ptharray = np.zeros(table.dim)
+    # ptharray = np.zeros(table.dim)
+    ptharray = np.zeros(pgFig.table.dim)
 
     def singpth(i):
         print (i)
@@ -17,7 +21,8 @@ def psdraw_density(self, rp_wid = 5, greyscale = (0,255), gamadj = .2):
     paths = ptharray / np.max(ptharray)
 
     gsadj = greyscale[1] - greyscale[0]
-    #colarray = np.zeros(table.dim)
+    # colarray = np.zeros(table.dim)
+    colarray = np.zeros(pgFig.table.dim)
 
     print ('some adjustments')
     n = make_noisy(self.tab,None,None,None,None)
@@ -25,7 +30,9 @@ def psdraw_density(self, rp_wid = 5, greyscale = (0,255), gamadj = .2):
 
     print ('real made')
 
-    sc = table.draw()
+    # sc = table.draw()
+    sc = pgFig.draw()
+
     #sarray = pg.surfarray.pixels3d(sc)
     #print sarray
 

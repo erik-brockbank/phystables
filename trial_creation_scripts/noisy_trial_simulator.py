@@ -4,6 +4,7 @@ import os
 from phystables.constants import get_const
 from phystables.models.point_simulation import PointSimulation
 from phystables.trials import load_trial, RedGreenTrial
+from phystables.visualize import vizmodels
 
 
 TRIAL_PATH = "saved_trials"
@@ -76,6 +77,8 @@ def get_simulation_outcomes(trialname, filepath):
     ps = PointSimulation(rgtable, maxtime = 10, cpus = 1) # NB: without cpu arg, async_map call in point_simulation fails
     sim = ps.run_simulation()
 
+    vizmodels.psdraw_density(ps)
+
     assert(len(sim[0]) == len(sim[1]) == len(sim[2]) == len(sim[3]))
     return {"outcomes": sim[0],
             "endpoints": sim[1],
@@ -85,10 +88,10 @@ def get_simulation_outcomes(trialname, filepath):
 
 def main():
     # initialize csv writer
-    csv_output = open(OUTPUT_FILE, "w")
-    csvwriter = csv.writer(csv_output)
+    #csv_output = open(OUTPUT_FILE, "w")
+    #csvwriter = csv.writer(csv_output)
     # write header
-    csvwriter.writerow(CSV_HEADER)
+    #csvwriter.writerow(CSV_HEADER)
 
     # TODO consider making this a little less ad hoc...
     files = [f for f in os.listdir(TRIAL_PATH) if f.endswith(".json") and
@@ -99,16 +102,19 @@ def main():
 
     # simulate trials and write results
     files = sorted(files)
+
+    files = ["contain_sc1_var_l1_complex_l1.json"]
     for f in files:
         trialname = f.split('.')[0]
         read_file = os.path.join(TRIAL_PATH, f)
         print("Running simulations for {}".format(read_file))
         sim_outcomes = get_simulation_outcomes(trialname, read_file)
 
-        print("Writing {} to csv at: {}".format(trialname, OUTPUT_FILE))
-        write_to_csv(trialname, sim_outcomes, csvwriter)
+        #print("Writing {} to csv at: {}".format(trialname, OUTPUT_FILE))
+        #write_to_csv(trialname, sim_outcomes, csvwriter)
 
-    csv_output.close()
+
+    #csv_output.close()
 
 
 
