@@ -1,3 +1,10 @@
+"""
+Script for running simulation analysis for phystables environments
+To run this:
+- cd phystables (root of repo)
+- python -m trial_creation_scripts.noisy_trial_simulator
+Output writes to csv file in root
+"""
 import csv
 import os
 
@@ -9,8 +16,13 @@ from phystables.visualize import vizmodels
 
 TRIAL_PATH = "saved_trials"
 
-OUTPUT_FILE = "containment_sims.csv" # name of csv file to write to
-CSV_HEADER = ["trialname", "outcome", "endpoint_x", "endpoint_y", "bounces", "tsims"]
+OUTPUT_FILE = "analysis/containment_sims.csv"
+
+CSV_HEADER = ["trialname", "simulation_number", "max_simulation_time", # simulation variables
+                "outcome", "endpoint_x", "endpoint_y", "bounces", "simulation_time"] # values
+
+MAX_SIMTIME = 60
+SIMULATIONS = 200 # 200 is the default in PointSimulation
 
 DEFAULTVEL = [175, 180]
 
@@ -39,16 +51,31 @@ MODIFIED_TRIALS = {
     "contain_sc4_var_l2_complex_l2_TWICE": [-175, -175]
 }
 
-def write_to_csv(simname, sim_outcomes, csvwriter):
+
+def get_scenario_files(filepath):
+    # TODO consider making this a little less ad hoc...
+    files = [f for f in os.listdir(filepath) if f.endswith(".json") and
+        "contain" in f and
+        "distractor" not in f and
+        ("sc1" in f or "sc2" in f or "sc3" in f or "sc4" in f)]
+    files = sorted(files)
+
+    return files
+
+
+
+def write_to_csv(simname, simtime, sim_outcomes, csvwriter):
     for i in range(len(sim_outcomes["outcomes"])):
         # get data
         writedata = [
             simname,
+            i + 1,
+            simtime,
             get_const(sim_outcomes["outcomes"][i]),
             sim_outcomes["endpoints"][i][0],
             sim_outcomes["endpoints"][i][1],
             sim_outcomes["bounces"][i],
-            sim_outcomes["tsims"][i]
+            sim_outcomes["simulation_time"][i]
         ]
         # write data to csv
         csvwriter.writerow(writedata)
@@ -67,57 +94,50 @@ def get_ball_vel(trialname, currvel):
     return newvel
 
 
-def get_simulation_outcomes(trialname, filepath):
+def get_simulation_outcomes(trialname, filepath, simtime, nsims):
     rgtrial = load_trial(filepath)
     # correct ball velocity
     new_vel = get_ball_vel(trialname, rgtrial.ball[1])
     rgtrial.ball = (rgtrial.ball[0],) + (new_vel,) + (rgtrial.ball[2:len(rgtrial.ball)])
     # make table and simulation object
     rgtable = rgtrial.make_table()
-    ps = PointSimulation(rgtable, maxtime = 10, cpus = 1) # NB: without cpu arg, async_map call in point_simulation fails
+    ps = PointSimulation(rgtable, nsims = nsims, maxtime = simtime, cpus = 1) # NB: without cpu arg, async_map call in point_simulation fails
     sim = ps.run_simulation()
 
-    vizmodels.psdraw_density(ps)
+    # this probably draws the trials (?) but doesn't seem to work quite right
+    # vizmodels.psdraw_density(ps)
 
     assert(len(sim[0]) == len(sim[1]) == len(sim[2]) == len(sim[3]))
     return {"outcomes": sim[0],
             "endpoints": sim[1],
             "bounces": sim[2],
-            "tsims": sim[3]}
+            "simulation_time": sim[3]}
 
 
 def main():
-    # initialize csv writer
-    #csv_output = open(OUTPUT_FILE, "w")
-    #csvwriter = csv.writer(csv_output)
-    # write header
-    #csvwriter.writerow(CSV_HEADER)
+    # initialize csv file
+    csv_output = open(OUTPUT_FILE, "w")
+    csvwriter = csv.writer(csv_output)
+    csvwriter.writerow(CSV_HEADER)
 
-    # TODO consider making this a little less ad hoc...
-    files = [f for f in os.listdir(TRIAL_PATH) if f.endswith(".json") and
-        "contain" in f and
-        "distractor" not in f and
-        ("sc1" in f or "sc2" in f or "sc3" in f or "sc4" in f)]
-    print("Reading in files at {}. Num files: {}".format(TRIAL_PATH, len(files)))
+    # get relevant scenario files for simulation
+    scenario_files = get_scenario_files(TRIAL_PATH)
+    print("Reading in files. Num files: {}".format(len(scenario_files)))
 
     # simulate trials and write results
-    files = sorted(files)
-
-    files = ["contain_sc1_var_l1_complex_l1.json"]
-    for f in files:
-        trialname = f.split('.')[0]
+    for f in scenario_files:
+        trialname = f.split(".")[0]
         read_file = os.path.join(TRIAL_PATH, f)
         print("Running simulations for {}".format(read_file))
-        sim_outcomes = get_simulation_outcomes(trialname, read_file)
+        sim_outcomes = get_simulation_outcomes(trialname, read_file, MAX_SIMTIME, SIMULATIONS)
 
-        #print("Writing {} to csv at: {}".format(trialname, OUTPUT_FILE))
-        #write_to_csv(trialname, sim_outcomes, csvwriter)
+        print("Writing {} to csv at: {}".format(trialname, OUTPUT_FILE))
+        write_to_csv(trialname, MAX_SIMTIME, sim_outcomes, csvwriter)
+
+    csv_output.close()
+    print("Complete")
 
 
-    #csv_output.close()
 
-
-
-### Simple stub to run the PointSimulator for generating noisy simulations of phystables trials ###
 if __name__ == "__main__":
     main()
